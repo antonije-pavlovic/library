@@ -1,0 +1,1 @@
+@yield('bg_image')
