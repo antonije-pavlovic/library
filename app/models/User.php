@@ -48,4 +48,30 @@ class User
             ->where('id','=',$id)
             ->first();
     }
+    //$name,$username,$password,$email,$active,$token,$role
+
+    function insert($name,$username,$password,$email,$active,$token,$role) {
+        return DB::table('user')
+            ->insert([
+                "name" => $name,
+                "username" => $username,
+                "password" => $password,
+                "email" => $email,
+                "active" => $active,
+                "token" => $token,
+                "role_id" => $role
+            ]);
+    }
+
+    function getAllUsers(){
+        return DB::table('user')
+            ->get();
+    }
+
+    function delete($id){
+        return DB::table('user')
+            ->where('id','=',$id)
+            ->delete();
+    }
+
 }

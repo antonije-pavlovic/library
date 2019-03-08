@@ -39,5 +39,16 @@ Route::post('/register','AuthController@register');
 
 //Admin
 Route::get('/admin','AdminController@renderAdmin');
-Route::get('/addUser','UserController@create');
+
+Route::get('/addUserForm','UserController@create');
 Route::get('/manageUsers','UserController@index');
+Route::post('/addUser','UserController@store');
+Route::get('/deleteUser/{id}','UserController@destroy');
+Route::get('/updateForm/{id}','UserController@edit');
+Route::post('/updateUser/{id}','UserController@update'); //ovde ide ajax update !!!!!!!!1
+
+Route::get('/renderErrors','ErrorController@renderError');
+Route::get('/errorCSV','ErrorController@exportCSV');
+
+Route::get('/renderActivity','ActivityController@renderActivity');
+Route::get('/activityCSV','ActivityController@exportCSV');

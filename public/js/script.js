@@ -82,8 +82,6 @@ const main = () => {
             success(data) {
                 console.log(data);
                 jQuery("#exampleModal").modal('show');
-                // console.log(data);
-                // console.log(data.code);
             },
             error(e) {
                 let elem = '';
@@ -92,7 +90,6 @@ const main = () => {
                     elem += `<p style="color: red;"> ${value[0]} </p>`;
                   //  console.log(value[0]);
                 });
-
                 $('.registerErrors').html(elem);
             }
         })
@@ -119,7 +116,7 @@ const main = () => {
                 userID
             },
             beforeSend: function() {
-                alert('just wait for a second')  //just wait a second !!!!
+                alert('just wait for a second')
             },
             success(data){
                 jQuery("#ignismyModal").modal('show');
@@ -130,6 +127,7 @@ const main = () => {
             }
         })
     });
+
     /**********S E A R C H  B Y  A U T H O R*********/
     $('.searchBtn').on('click',() => {
 
@@ -183,8 +181,6 @@ const main = () => {
                 }
             })
         }
-        //RegExr da ga ocistim od svega sto nisu slova
-
     });
 
     $(document).on('click','.paginationLink', function() {
@@ -201,7 +197,7 @@ const main = () => {
                 numPerPage
             },
             success(data){
-                //render books pagination
+                //render books - pagination
                 let elem = '';
                 for(let i = 0 ; i < data.length ; i ++){
                     elem += `<div class="card col-lg-3 m-2  bg-light ">

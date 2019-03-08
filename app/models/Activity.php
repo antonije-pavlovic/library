@@ -23,4 +23,9 @@ class Activity
                 "time" => date('H:i:s')
         ]);
     }
+
+    function getActivity(){
+        return DB::table('activity_log')
+            ->get();
+    }
 }

@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private $u;
+    function __construct()
+    {
+        $this->u = new User();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.manageUsers');
+        $res = $this->u->getAllUsers();
+        return view('pages.admin.manageUsers',['users' => $res]);
     }
 
     /**
@@ -31,10 +40,31 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *
+     *  name,
+    username,
+    email,
+    password,
+    active,
+    role
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $active = $request->input('active');
+        $role = $request->input('role');
+        $token = md5(time() . $password);
+        try{
+            $res = $this->u->insert($name,$username,$password,$email,$active,$token,$role);
+            if($res)
+                return response()->json($res);
+        }catch (QueryException $e){
+            return response()->json($e);
+        }
+
     }
 
     /**
@@ -56,7 +86,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $res = $this->u->getUser($id);
+        return view('pages.admin.updateUser',['user' => $res]);
     }
 
     /**
@@ -68,7 +99,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return response()->json($id);
     }
 
     /**
@@ -79,6 +110,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = $this->u->delete($id);
+        return response()->json($res);
     }
 }

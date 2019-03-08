@@ -21,4 +21,10 @@ class Error
                 "time" => date('H:i:s')
             ]);
     }
+
+    public function getErrors(){
+        return DB::table('error_log')
+            ->get();
+    }
+
 }
