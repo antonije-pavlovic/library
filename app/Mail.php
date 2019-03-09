@@ -33,7 +33,7 @@ class Mail
             $this->mail->Host = 'smtp.gmail.com';
             $this->mail->SMTPAuth = true;
             $this->mail->Username = 'tokoricnickoimejezauzeto@gmail.com';
-            $this->mail->Password = '$#@$@#$';
+            $this->mail->Password = 'Lozinka123!';
             $this->mail->SMTPSecure = 'tls';
             $this->mail->Port = 587;
 
