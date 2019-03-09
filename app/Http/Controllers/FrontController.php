@@ -97,4 +97,9 @@ class FrontController extends Controller
         $res = $this->b->paginatinCategory($catID,$offset,$perPage);
         return response()->json($res);
     }
+
+    function showBook($id){
+        $res = $this->b->getBook($id);
+        return view('pages.moreInfo',['book'=>$res]);
+    }
 }

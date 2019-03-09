@@ -53,6 +53,7 @@ class Book
         return DB::table('book as b')
             ->join('category as c','b.cat_id','=','c.id')
             ->where('c.id','=',$catID)
+            ->select('*','b.id as bookID')
             ->get();
     }
 
@@ -65,4 +66,7 @@ class Book
             ->select('*','b.id as bookID','c.id as catID')
             ->get();
     }
+
+
+
 }

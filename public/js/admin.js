@@ -66,7 +66,6 @@ const main = () => {
         let name = $('#name').val();
         let username = $('#username').val();
         let email = $('#email').val();
-        let password = $('#password').val();
         let active = $('#active').val();
         let role = $('#role').val();
 
@@ -78,15 +77,16 @@ const main = () => {
                 name,
                 username,
                 email,
-                password,
                 active,
                 role
             },
             success(data){
-                console.log(data);
+                if(data == 200)
+                    jQuery('#updateSuccesfull').modal('show');
+
             },
             error(err){
-                console.log(err);
+               console.log(err);
             }
         })
     })

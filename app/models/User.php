@@ -48,7 +48,6 @@ class User
             ->where('id','=',$id)
             ->first();
     }
-    //$name,$username,$password,$email,$active,$token,$role
 
     function insert($name,$username,$password,$email,$active,$token,$role) {
         return DB::table('user')
@@ -73,5 +72,25 @@ class User
             ->where('id','=',$id)
             ->delete();
     }
+
+    function update($name,$username,$email,$active,$role,$id){
+        return DB::table('user')
+            ->where('id','=',$id)
+            ->update([
+                "name" => $name,
+                "username" => $username,
+                "email" => $email,
+                "active" => $active,
+                "role_id" => $role
+            ]);
+    }
+
+    function userActivity($id){
+        return DB::table('user as u')
+            ->join('activity_log as a','u.id','=','a.user_id')
+            ->where('a.user_id','=',$id)
+            ->get();
+    }
+
 
 }

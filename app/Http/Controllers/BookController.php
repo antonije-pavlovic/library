@@ -30,7 +30,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.addBook');
     }
 
     /**
@@ -52,8 +52,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-       $res = $this->b->getBook($id);  //prebaci u front kontroler
-        return view('pages.moreInfo',['book'=>$res]);
+      //
     }
 
     /**

@@ -75,7 +75,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $res = $this->u->userActivity($id);
+        return view('pages.admin.userActivity',['data' => $res]);
     }
 
     /**
@@ -96,10 +97,30 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * name,
+    username,
+    email,
+    password,
+    active,
+    role
      */
     public function update(Request $request, $id)
     {
-        return response()->json($id);
+        //ubaci rikvest klasuuu
+
+        $name = $request->input('name');
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $active = $request->input('active');
+        $role = $request->input('role');
+
+
+        $res = $this->u->update($name,$username,$email,$active,$role,$id);
+        if($res){
+            return response()->json(200);
+        }else
+            return response()->json(400);
     }
 
     /**

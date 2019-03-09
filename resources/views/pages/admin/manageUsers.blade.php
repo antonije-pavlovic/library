@@ -22,7 +22,7 @@
                     <td>{{$user->username}}</td>
                     <td> <button type="button" class="btn btn-danger deleteUser" data-uid="{{$user->id}}"> Delete</button> </td>
                     <td> <a href="/updateForm/{{$user->id}}" class="btn btn-primary">Update</a> </td>
-                    <td> <button type="button" class="btn btn-success" data-uid="{{$user->id}}">Activity</button> </td>
+                    <td> <a href="/userActivity/{{$user->id}}" class="btn btn-success" >Activity</a> </td>
                 </tr>
             @endforeach
             </tbody>
