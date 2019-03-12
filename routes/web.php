@@ -63,3 +63,4 @@ Route::get('/errorCSV','ErrorController@exportCSV');
 Route::get('/renderActivity','ActivityController@renderActivity');
 Route::get('/activityCSV','ActivityController@exportCSV');
 Route::get('/userActivityCSV/{id}','ActivityController@userActivityCSV');
+Route::post('/activityDate','ActivityController@activityDate');

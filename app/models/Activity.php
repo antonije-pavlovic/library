@@ -28,4 +28,11 @@ class Activity
         return DB::table('activity_log')
             ->get();
     }
+
+    function activityDate($from,$to){
+        return DB::table('activity_log')
+            ->where('date','>=',$from)
+            ->where('date','<=',$to)
+            ->get();
+    }
 }

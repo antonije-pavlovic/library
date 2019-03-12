@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegistrationRequest;
 use App\models\Activity;
 use App\models\User;
 use Illuminate\Http\Request;
@@ -88,6 +89,16 @@ class ActivityController extends Controller
         fclose($handle);
         return response()->download($filename, $data[0]->name . 'Activity.csv', $headers);
 
+
+    }
+
+    function activityDate(Request $request){
+        $from = $request->input('from');
+        $to = $request->input('to');
+
+        $res = $this->a->activityDate($from,$to);
+        if($res)
+            return response()->json($res);
 
     }
 }

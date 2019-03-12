@@ -89,13 +89,62 @@ const main = () => {
         })
     });
 
-    /********SEARCH BY DATE ERROR*******/
-   $('.errorDate').on('click',() => {
+   /********SEARCH BY DATE ACTIVITY*******/
+   $('.activityDate').on('click',() => {
        let from = $('.from').val();
        let to = $('.to').val();
+       if(from && to){
+           $.ajax({
+               url : '/activityDate',
+               method : 'post',
+               dataType : 'json',
+               data : {
+                   from,
+                   to
+               },
+               success(data) {
+                   console.log(data);
+                   if(data){
+                       let elem = '';
+                       elem += `<h5>All activities in between ${from} and ${to} / <a href="/renderActivity">Load all activity</a></h5>`;
+                       elem +=  ` <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                   <table class="table mt-3">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Activity</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>`;
+                       for(let i = 0 ; i < data.length ; i++){
+                           elem += `<tr>
+                            <th scope="row">${ i + 1}</th>
+                            <td>${data[i].user_id}</td>
+                            <td>${data[i].activity}</td>
+                            <td>${data[i].date}</td>
+                            <td>${data[i].time}</td>
+                        </tr>`
+                       }
+                       elem += ` </tbody>
+                            </table>
+                        </div>
+                        <span class="mt-3">Get export in <a href="/activityCSV">CSV (all data from database)</a></span>`;
 
-
-
+                       $('.activityContainer').html(elem);
+                   }else{
+                       alert(data)
+                   }
+               },
+               error(err){
+                   console.log(err);
+               }
+           })
+       }else{
+           alert('Choose the start and end date')
+       }
    })
 };
 document.addEventListener('DOMContentLoaded',main());
