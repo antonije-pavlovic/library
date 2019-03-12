@@ -4,7 +4,7 @@
     <div class="row justify-content-center mt-5">
 
         <div class="col-lg-6 mt-5">
-            <img src="{{$book[0]->picture}}"/>
+            <img class="img-fluid" src="{{$book[0]->picture}}"/>
         </div>
         <div class="col-lg-6 mt-5">
             <h2 class="mb-5">{{$book[0]->title}}</h2>

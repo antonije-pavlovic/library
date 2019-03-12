@@ -50,6 +50,10 @@ Route::get('/userActivity/{id}','UserController@show');
 
 //book
 Route::get('/addBookForm','BookController@create');
+Route::post('/uploadBook','BookController@store');
+Route::get('/manageBooks','BookController@index');
+Route::get('/updateBookForm/{id}','BookController@edit');
+Route::post('/updateBook/{id}','BookController@update');
 
 //error
 Route::get('/renderErrors','ErrorController@renderError');

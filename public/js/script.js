@@ -164,7 +164,7 @@ const main = () => {
                         if(i > numPerPage)
                             break;
                         elem += `<div class="card col-lg-3 m-2  bg-light ">
-                       <img src="{{asset('/')}}${rows[i].picture}" class="card-img-top pt-2" alt="...">
+                       <img src="${rows[i].picture}" class="card-img-top pt-2" alt="...">
                        <div class="card-body">
                            <h5 class="card-title">${rows[i].title}</h5>
                            <p class="card-text">${rows[i].description.substr(0, 50)}</p> ...
@@ -201,7 +201,7 @@ const main = () => {
                 let elem = '';
                 for(let i = 0 ; i < data.length ; i ++){
                     elem += `<div class="card col-lg-3 m-2  bg-light ">
-                       <img src="{{asset('/')}}${data[i].picture}" class="card-img-top pt-2" alt="...">
+                       <img src="${data[i].picture}" class="card-img-top pt-2" alt="...">
                        <div class="card-body">
                            <h5 class="card-title">${data[i].title}</h5>
                            <p class="card-text">${data[i].description.substr(0, 50)}</p> ...
@@ -250,7 +250,7 @@ const main = () => {
                     if(i > numPerPage)
                         break;
                     elem += `<div class="card col-lg-3 m-2  bg-light ">
-                       <img src="{{asset('/')}}${data[i].picture}" class="card-img-top pt-2" alt="...">
+                       <img src="${data[i].picture}" class="card-img-top pt-2" alt="...">
                        <div class="card-body">
                            <h5 class="card-title">${data[i].title}</h5>
                            <p class="card-text">${data[i].description.substr(0, 50)}</p> ...
@@ -287,7 +287,7 @@ const main = () => {
                 let elem = '';
                 for(let i = 0 ; i < data.length ; i ++){
                     elem += `<div class="card col-lg-3 m-2  bg-light ">
-                       <img src="{{asset('/')}}${data[i].picture}" class="card-img-top pt-2" alt="...">
+                       <img src="${data[i].picture}" class="card-img-top pt-2" alt="...">
                        <div class="card-body">
                            <h5 class="card-title">${data[i].title}</h5>
                            <p class="card-text">${data[i].description.substr(0, 50)}</p> ...

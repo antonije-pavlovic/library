@@ -27,17 +27,16 @@ const main = () => {
                 active,
                 role
             },
-            success(data){
+            success(data) {
                 if(data){
                     jQuery('#addUser').modal('show');
                     $("#form").trigger('reset');
                 }
             },
-            error(err){
+            error(err) {
                 console.log(err);
             }
         })
-
     });
 
 /********D E L E T E  U S E R*******/
@@ -61,7 +60,7 @@ const main = () => {
     });
 
 /*********U P D A T E  U S E R**************/
-    $('.updateUser').on('click',function (){
+    $('.updateUser').on('click',function () {
         let userID = $(this).data('uid');
         let name = $('#name').val();
         let username = $('#username').val();
@@ -80,16 +79,23 @@ const main = () => {
                 active,
                 role
             },
-            success(data){
+            success(data) {
                 if(data == 200)
                     jQuery('#updateSuccesfull').modal('show');
-
             },
-            error(err){
+            error(err) {
                console.log(err);
             }
         })
-    })
+    });
 
+    /********SEARCH BY DATE ERROR*******/
+   $('.errorDate').on('click',() => {
+       let from = $('.from').val();
+       let to = $('.to').val();
+
+
+
+   })
 };
 document.addEventListener('DOMContentLoaded',main());

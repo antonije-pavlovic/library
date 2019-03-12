@@ -35,7 +35,7 @@
            <div class="row productContainer">
                @foreach($books as $book)
                    <div class="card col-lg-3 m-2  bg-light ">
-                       <img src="{{asset('/')}}images/book.jpeg" class="card-img-top pt-2" alt="...">
+                       <img src="{{$book->picture}}" class="card-img-top pt-2" alt="...">
                        <div class="card-body">
                            <h5 class="card-title">{{$book->title}}</h5>
                            <p class="card-text">{{$book->description}}</p> ...

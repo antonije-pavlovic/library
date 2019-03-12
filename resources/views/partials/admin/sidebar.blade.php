@@ -10,7 +10,7 @@
             <a href="/addUserForm" class="list-group-item list-group-item-action bg-light">Add user</a>
             <a href="/manageUsers" class="list-group-item list-group-item-action bg-light">Manage users</a>
             <a href="/addBookForm" class="list-group-item list-group-item-action bg-light">Add book</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Manage books</a>
+            <a href="/manageBooks" class="list-group-item list-group-item-action bg-light">Manage books</a>
             <a href="/renderErrors" class="list-group-item list-group-item-action bg-light">Errors</a>
             <a href="/renderActivity" class="list-group-item list-group-item-action bg-light">Activity</a>
         </div>
