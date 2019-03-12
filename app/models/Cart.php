@@ -39,6 +39,14 @@ class Cart
             ->delete();
     }
 
+    function getOrderedBooks($userID){
+        return DB::table('cart as c')
+            ->join('book as b','c.book_id','=','b.id')
+            ->where('c.user_id','=',$userID)
+            ->where('buy','=','0')
+            ->get();
+    }
+
     function buy($userID){
         return DB::table('cart')
             ->where('user_id','=',$userID)

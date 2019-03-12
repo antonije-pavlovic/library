@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail;
 use App\models\Activity;
 use App\models\Cart;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -50,16 +51,29 @@ class CartController extends Controller
 
     function buy(Request $req){
         $userID = $req->input('userID');
+        $orderedBooks = $this->c->getOrderedBooks($userID);
+
+        $emailText = '</<br><span>Order items:</span>';
+        $emailText .= '<ul>';
+        $priceSum = 0;
+
+        for($i = 0  ; $i < count($orderedBooks) ; $i++){
+            $emailText .= '<li>'. $orderedBooks[$i]->title .'</li>';
+            $priceSum += $orderedBooks[$i]->price;
+        }
+
+        $emailText .= '</ul>';
+        $emailText .= '<span> Order price: $'. $priceSum .' </span>';
+
         $res = $this->c->buy($userID);
-        if($res == 1){
-            $code = $this->mail->confirmationMail($userID);
+        if($res){
+            $code = $this->mail->confirmationMail($userID,$emailText);
             if($code == 200){
                 $this->activity->insertActivity($userID,'user has made purchase');
                 return response()->json($code);
+            }else{
+                $this->activity->insertActivity($userID,$code);
             }
-
         }
-
-
     }
 }

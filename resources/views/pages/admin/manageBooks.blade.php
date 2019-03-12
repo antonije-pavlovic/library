@@ -27,7 +27,7 @@
                         <td>{{$book->isbn}}</td>
                         <td>{{$book->authorName}}</td>
                         <td>{{$book->categoryName}}</td>
-                        <td> <button type="button" class="btn btn-danger deleteUser" data-uid="{{$book->bookID}}"> Delete</button> </td>
+                        <td> <button type="button" class="btn btn-danger deleteBook" data-pid="{{$book->bookID}}"> Delete</button> </td>
                         <td> <a href="/updateBookForm/{{$book->id}}" class="btn btn-primary">Update</a> </td>
                     </tr>
                 @endforeach

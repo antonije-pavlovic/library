@@ -82,7 +82,7 @@ class Mail
         }
     }
 
-    function confirmationMail($userID){
+    function confirmationMail($userID,$emailText){
         $this->user = new User();
         $res = $this->user->getUser($userID);
         $email = $res->email;
@@ -91,7 +91,7 @@ class Mail
             $this->mail->addAddress($email);
             $this->mail->isHTML(true);
             $this->mail->Subject = 'Confirmation mail';
-            $this->mail->Body = 'Your order has been accepted';
+            $this->mail->Body = 'Your order has been accepted'.$emailText;
             if($this->mail->send()){
                 $this->code = 200;
                 return $this->code;

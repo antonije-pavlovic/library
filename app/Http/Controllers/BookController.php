@@ -144,6 +144,8 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = $this->b->deleteBook($id);
+        if($res)
+            return response()->json($res);
     }
 }

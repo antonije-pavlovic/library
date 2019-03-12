@@ -322,7 +322,7 @@ const main = () => {
                 if(data)
                     alert('uspesno ste ubacili prozivod'); //sad nesto da uradi redirect ili tako nesto
                 else
-                    alert('popusio si ga')
+                    alert('greska')
             },
             error(err){
                 console.log(err);
@@ -347,10 +347,9 @@ const main = () => {
             },
             success(data){
                 if(data){
-                    $(`i.removeProduct[data-id=${bookID}]`).fadeOut(300, function() { $(`i.removeProduct[data-id=${bookID}]`).parents()[3].remove();});
-                    let newSum = (sumPrice - bookPrice);
-                    $('.sumPrice').html(newSum)
-                }
+                    $(`i.removeProduct[data-id=${bookID}]`).parents()[3].remove();
+                    let newSum = (sumPrice - bookPrice).toFixed(2);
+                    $('.sumPrice').html(newSum.toString())                }
                else
                    alert('greska')
             },
@@ -371,10 +370,11 @@ const main = () => {
                 userID
             },
             success(data) {
-                if(data === 200)
-                    alert('You order was successful');
-                else
-                    console.log('nesto nije ok');
+                console.log(data);
+                // if(data === 200)
+                //     alert('You order was successful');
+                // else
+                //     console.log('nesto nije ok');
             },
             error(err){
                 console.log(err);

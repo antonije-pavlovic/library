@@ -60,10 +60,10 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-lg-6">
-                                <a href="" class="btn btn-success buyProducts" data-uid="{{session()->get('user')[0]->id}}">Buy</a>
+                                <button  class="btn btn-success buyProducts" data-uid="{{session()->get('user')[0]->id}}">Buy</button>
                             </div>
                             <div class="col-lg-6 " >
-                                <span style="float:right"> Total price: <b class="sumPrice">${{$price}}</b></span>
+                                <span style="float:right"> Total price: <b>$</b><b class="sumPrice">{{$price}}</b></span>
                             </div>
                         </div>
                     </div>

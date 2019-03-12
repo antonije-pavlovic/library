@@ -60,6 +60,11 @@ class Book
                 "cat_id" => $category
             ]);
     }
+    function deleteBook($id){
+        return DB::table('book')
+            ->where('id','=',$id)
+            ->delete();
+    }
 
     function getNewBooks(){
         return DB::table('book')

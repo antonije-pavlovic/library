@@ -145,6 +145,25 @@ const main = () => {
        }else{
            alert('Choose the start and end date')
        }
-   })
+   });
+
+    /***********D E L E T E  B O O K************/
+    $('.deleteBook').on('click',function () {
+        let bookID = $(this).data('pid');
+
+        $.ajax({
+            url : '/deleteBook/' + bookID,
+            method : 'post',
+            dataType : 'json',
+            data : {},
+            success(data){
+                if(data)
+                    $(`button.deleteBook[data-pid=${bookID}]`).fadeOut(300, () => $(`button.deleteBook[data-pid=${bookID}]`).parents()[1].remove());
+            },
+            error(err){
+                console.log(err);
+            }
+        })
+    })
 };
-document.addEventListener('DOMContentLoaded',main());
+document.addEventListener('DOMCoalertntentLoaded',main());
