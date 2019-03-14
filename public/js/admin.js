@@ -170,6 +170,46 @@ const main = () => {
                 console.log(err);
             }
         })
+    });
+
+    /*************A D D C A T E G O R Y*************/
+    $('.addCategory').on('click',function () {
+        let name = $('.categoryName').val();
+        $.ajax({
+            url : '/addCategory',
+            method : 'post',
+            dataType : 'json',
+            data : {
+                name
+            },
+            success(data){
+                if(data){
+                    alert('Successfully added')
+                    window.location.href = "/admin";
+                }
+
+            },
+            error(err){
+                console.log(err);
+            }
+        })
+    });
+    /************D E L E T E  C A T E G O R Y*******/
+    $('.deleteCategory').on('click',function () {
+        let catID = $(this).data('pid');
+
+        $.ajax({
+            url : '/deleteCategory/'+ catID,
+            method : 'get',
+            dataType : 'json',
+            data : {},
+            success(data) {
+                if(data)
+                    $(`button.deleteCategory[data-pid=${catID}]`).fadeOut(300, () => $(`button.deleteCategory[data-pid=${catID}]`).parents()[1].remove());
+            },error(err){
+                console.log(err);
+            }
+        })
     })
 };
 document.addEventListener('DOMCoalertntentLoaded',main());
