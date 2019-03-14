@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddBookRequest;
 use App\models\Author;
 use App\models\Book;
 use App\models\Category;
@@ -46,7 +47,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //ubaciti Request klasu za proveru
+    public function store(AddBookRequest $request) //ubaciti Request klasu za proveru
     {
         $title = $request->input('title');
         $pages = $request->input('pages');

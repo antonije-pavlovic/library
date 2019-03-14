@@ -34,8 +34,9 @@
                 <a href="/register" class="btn btn-outline-success my-2 my-sm-0" >Register</a>
             @else
                 <a href="/logout" class="btn btn-outline-success my-2 my-sm-0 ">Logout</a>
-                <a href="/admin" class="btn btn-outline-success my-2 my-sm-0 ">Admin</a>
-
+                @if(session()->get('user')[0]->role_id == 2)
+                    <a href="/admin" class="btn btn-outline-success my-2 my-sm-0 ">Admin</a>
+                @endif
                 <a href="/cart" class="btn btn-outline-success ml-4 my-2 my-sm-0">
                     Cart
                 </a>

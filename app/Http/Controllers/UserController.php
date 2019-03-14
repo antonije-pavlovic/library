@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddUserRequest;
 use App\models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class UserController extends Controller
     active,
     role
      */
-    public function store(Request $request)
+    public function store(AddUserRequest $request)
     {
         $name = $request->input('name');
         $username = $request->input('username');

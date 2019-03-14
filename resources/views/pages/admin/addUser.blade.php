@@ -53,6 +53,11 @@
                 </div>
                 </div>
             </form> <!-- /form -->
+            <div class="row">
+                <div class="col-lg-6 mx-auto addUserErrors">
+
+                </div>
+            </div>
         </div> <!-- ./container -->
         <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

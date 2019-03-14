@@ -22,12 +22,6 @@ Route::get('/categoryFilter','FrontController@categoryFilter');
 Route::get('/paginatinCategory','FrontController@paginatinCategory');
 Route::get('/moreInfo/{id}', 'FrontController@showBook');
 
-//Cart zastiti da se ne moze pristupiti ukoliko nije ulogovan
-Route::get('/cart','CartController@renderCart');
-Route::post('/addToCart','CartController@addToCart');
-Route::post('/removeFromCart','CartController@remove');
-Route::post('/buy','CartController@buy');
-
 //Auth
 Route::get('/login','AuthController@renderLogin');
 Route::get('/register','AuthController@renderRegister');
@@ -36,32 +30,39 @@ Route::get('/verification/{token}','AuthController@verification');
 Route::post('/login','AuthController@login');
 Route::post('/register','AuthController@register');
 
+/***** Cart ********/
+Route::group(['middleware'=>['loginCheck']],function (){
+    Route::get('/cart','CartController@renderCart');
+    Route::post('/addToCart','CartController@addToCart');
+    Route::post('/removeFromCart','CartController@remove');
+    Route::post('/buy','CartController@buy');
+});
 /*****Admin panel********/
-Route::get('/admin','AdminController@renderAdmin');
+Route::group(['middleware'=> ['adminCheck']], function (){
 
+    Route::get('/admin','AdminController@renderAdmin');
+    Route::get('/unauthorized','AdminController@unauthorized');
 //user
-Route::get('/addUserForm','UserController@create');
-Route::get('/manageUsers','UserController@index');
-Route::post('/addUser','UserController@store');
-Route::get('/deleteUser/{id}','UserController@destroy');
-Route::get('/updateForm/{id}','UserController@edit');
-Route::post('/updateUser/{id}','UserController@update');
-Route::get('/userActivity/{id}','UserController@show');
-
+    Route::get('/addUserForm','UserController@create');
+    Route::get('/manageUsers','UserController@index');
+    Route::post('/addUser','UserController@store');
+    Route::get('/deleteUser/{id}','UserController@destroy');
+    Route::get('/updateForm/{id}','UserController@edit');
+    Route::post('/updateUser/{id}','UserController@update');
+    Route::get('/userActivity/{id}','UserController@show');
 //book
-Route::get('/addBookForm','BookController@create');
-Route::post('/uploadBook','BookController@store');
-Route::get('/manageBooks','BookController@index');
-Route::get('/updateBookForm/{id}','BookController@edit');
-Route::post('/updateBook/{id}','BookController@update');
-Route::post('/deleteBook/{id}','BookController@destroy');
-
+    Route::get('/addBookForm','BookController@create');
+    Route::post('/uploadBook','BookController@store');
+    Route::get('/manageBooks','BookController@index');
+    Route::get('/updateBookForm/{id}','BookController@edit');
+    Route::post('/updateBook/{id}','BookController@update');
+    Route::post('/deleteBook/{id}','BookController@destroy');
 //error
-Route::get('/renderErrors','ErrorController@renderError');
-Route::get('/errorCSV','ErrorController@exportCSV');
-
+    Route::get('/renderErrors','ErrorController@renderError');
+    Route::get('/errorCSV','ErrorController@exportCSV');
 //activity
-Route::get('/renderActivity','ActivityController@renderActivity');
-Route::get('/activityCSV','ActivityController@exportCSV');
-Route::get('/userActivityCSV/{id}','ActivityController@userActivityCSV');
-Route::post('/activityDate','ActivityController@activityDate');
+    Route::get('/renderActivity','ActivityController@renderActivity');
+    Route::get('/activityCSV','ActivityController@exportCSV');
+    Route::get('/userActivityCSV/{id}','ActivityController@userActivityCSV');
+    Route::post('/activityDate','ActivityController@activityDate');
+});

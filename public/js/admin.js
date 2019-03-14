@@ -34,7 +34,13 @@ const main = () => {
                 }
             },
             error(err) {
-                console.log(err);
+                let elem = '';
+                let errors = $.parseJSON(err.responseText);
+                $.each(errors['errors'], function(index, value) {
+                    elem += `<p style="color: red;"> ${value[0]} </p>`;
+                    //  console.log(value[0]);
+                });
+                $('.addUserErrors').html(elem);
             }
         })
     });
