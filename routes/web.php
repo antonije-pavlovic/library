@@ -66,9 +66,19 @@ Route::group(['middleware'=> ['adminCheck']], function (){
     Route::get('/userActivityCSV/{id}','ActivityController@userActivityCSV');
     Route::post('/activityDate','ActivityController@activityDate');
 
-    //category
+//category
     Route::get('/addCategoryForm','CategoryController@create');
     Route::get('/manageCategory','CategoryController@index');
     Route::post('/addCategory','CategoryController@store');
     Route::get('/deleteCategory/{id}','CategoryController@destroy');
+    Route::get('/updateCategoryForm/{id}','CategoryController@edit');
+    Route::post('/updateCategory','CategoryController@update');
+
+//author
+    Route::get('/addAuthorForm','AuthorController@create');
+    Route::post('/addAuthor','AuthorController@store');
+    Route::get('/manageAuthor','AuthorController@index');
+    Route::get('/deleteAuthor/{id}','AuthorController@destroy');
+    Route::get('/updateAuthorForm/{id}','AuthorController@edit');
+    Route::post('/updateAuthor','AuthorController@update');
 });

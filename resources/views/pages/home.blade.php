@@ -28,7 +28,11 @@
                         </div>
                         <!--end of col-->
                     </div>
+
                 </form>
+                <blockquote class="blockquote">
+                    <footer class="blockquote-footer"><cite title="Source Title">Such as Robert Kiyosaki, Zig Ziglar, Sun Tzu, Napoleon Hill...</cite></footer>
+                </blockquote>
             </div>
         </div>
         <div class="col-lg-8">

@@ -172,7 +172,7 @@ const main = () => {
         })
     });
 
-    /*************A D D C A T E G O R Y*************/
+    /*************A D D  C A T E G O R Y*************/
     $('.addCategory').on('click',function () {
         let name = $('.categoryName').val();
         $.ajax({
@@ -207,6 +207,92 @@ const main = () => {
                 if(data)
                     $(`button.deleteCategory[data-pid=${catID}]`).fadeOut(300, () => $(`button.deleteCategory[data-pid=${catID}]`).parents()[1].remove());
             },error(err){
+                console.log(err);
+            }
+        })
+    });
+    /*****U P D A T E  C A T E G O R Y*******/
+    $('.updateCategory').on('click',function () {
+        let catID = $(this).data('pid');
+        let name = $('.categoryUpdateName').val();
+        //console.log(name);
+        $.ajax({
+            url : '/updateCategory',
+            method : 'post',
+            dataType: 'json',
+            data :{
+                name,
+                catID
+            },success(data) {
+                if(data){
+                    alert('Successfully updated');
+                    window.location.href = "/admin";
+                }
+
+            },
+            error(err){
+                console.log(err);
+            }
+        })
+    })
+    /*******A D D  AU T H O R*******/
+    $('.addAuthor').on('click',function () {
+        let name = $('.authorName').val();
+        $.ajax({
+            url : '/addAuthor',
+            method : 'post',
+            dataType : 'json',
+            data : {
+                name
+            },
+            success(data){
+                if(data){
+                    alert('Successfully added')
+                    window.location.href = "/admin";
+                }
+            },
+            error(err){
+                console.log(err);
+            }
+        })
+    });
+    /************D E L E T E  A U T H O R*******/
+    $('.deleteAuthor').on('click',function () {
+        let authorID = $(this).data('pid');
+
+        $.ajax({
+            url : '/deleteAuthor/'+ authorID,
+            method : 'get',
+            dataType : 'json',
+            data : {},
+            success(data) {
+                if(data)
+                    $(`button.deleteAuthor[data-pid=${authorID}]`).fadeOut(300, () => $(`button.deleteAuthor[data-pid=${authorID}]`).parents()[1].remove());
+            },error(err){
+                console.log(err);
+            }
+        })
+    });
+
+    /*****U P D A T E  A U T H O R*******/
+    $('.updateAuthor').on('click',function () {
+        let authorID = $(this).data('pid');
+        let name = $('.authorName').val();
+        //console.log(name);
+        $.ajax({
+            url : '/updateAuthor',
+            method : 'post',
+            dataType: 'json',
+            data :{
+                name,
+                authorID
+            },success(data) {
+                if(data){
+                    alert('Successfully updated');
+                    window.location.href = "/admin";
+                }
+            },
+            error(err){
                 console.log(err);
             }
         })

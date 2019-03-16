@@ -2,29 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Category;
+use App\models\Author;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class AuthorController extends Controller
 {
-    private $c;
+    private $a;
 
     public function __construct()
     {
-        $this->c = new Category();
+        $this->a = new Author();
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function index()
     {
-
-        $res = $this->c->getCategories();
-        return view('pages.admin.category.manageCategory',['category'=>$res]);
+        $res = $this->a->getAuthors();
+        if($res)
+            return view('pages.admin.author.manageAuthor',['authors'=> $res]);
     }
 
     /**
@@ -34,7 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.category.addCategory');
+        return view('pages.admin.author.addAuthor');
     }
 
     /**
@@ -46,8 +45,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $name = $request->input('name');
-        $res = $this->c->insertCategory($name);
-        return response()->json($res);
+        $res = $this->a->insertAuthor($name);
+        if($res)
+            return response()->json($res);
     }
 
     /**
@@ -69,9 +69,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $res = $this->c->getCategory($id);
-        if($res)
-            return view('pages.admin.category.updateCategory',['cat'=>$res]);
+        $res = $this->a->getAuthor($id);
+        return view('pages.admin.author.updateAuthor',['author'=>$res]);
     }
 
     /**
@@ -86,13 +85,12 @@ class CategoryController extends Controller
 
 
         $name = $request->input('name');
-        $catID = $request->input('catID');
+        $id = $request->input('authorID');
 
-        $res = $this->c->update($catID,$name);
+        $res = $this->a->update($id,$name);
         if($res)
             return response()->json($res);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -101,7 +99,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $res = $this->c->deleteCategory($id);
+        $res = $this->a->deleteAuthor($id);
         if($res)
             return response()->json($res);
     }

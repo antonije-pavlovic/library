@@ -19,7 +19,7 @@ class User
         return DB::table('user')
             ->where([
                 'username' => $username,
-                'password' => $password
+                'password' => md5($password)
             ])
             ->first();
     }
@@ -28,7 +28,7 @@ class User
             ->insertGetId([
                 "name" => $name,
                 "username" => $username,
-                "password" => $password,
+                "password" => md5($password),
                 "email" => $email,
                 "active" => 0,
                 "token" => $token,

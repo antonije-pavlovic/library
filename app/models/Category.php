@@ -31,4 +31,19 @@ class Category
             ->delete();
     }
 
+    function getCategory($id){
+        return DB::table('category')
+            ->where('id','=',$id)
+            ->get();
+    }
+
+    function update($id,$name){
+        return DB::table('category')
+            ->where('id','=',$id)
+            ->update([
+                "name"=> $name
+            ]);
+
+    }
+
 }

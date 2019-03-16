@@ -371,17 +371,16 @@ const main = () => {
             },
             success(data) {
                 console.log(data);
-                // if(data === 200)
-                //     alert('You order was successful');
-                // else
-                //     console.log('nesto nije ok');
+                if(data === 200)
+                    alert('You order was successful,check your mail for details');
+                else
+                    console.log('nesto nije ok');
             },
             error(err){
                 console.log(err);
             }
         })
     })
-
 };
 document.addEventListener('DOMContentLoaded', main());
 

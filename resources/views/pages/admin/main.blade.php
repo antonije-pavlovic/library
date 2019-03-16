@@ -1,7 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-    <h1 class="mt-4">Simple Sidebar</h1>
     {{session('message')}}
-    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+    <div class="content justify-content-center">
+        <div class="row">
+            <div class="col-lg-5"></div>
+            <h3 class="col-lg-4 sidebar-heading mt-5">Welcome admin, {{session()->get('user')[0]->name}} </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <h5 class="col-lg-4 sidebar-heading mt-5">Here you can manage users,book,authors and categories </h5>
+    </div>
 @endsection

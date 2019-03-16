@@ -13,12 +13,12 @@
                 </thead>
                 <tbody>
                 @php ($counter = 0)
-                @foreach($category as $cat)
+                @foreach($authors as $author)
                     <tr>
                         <td scope="row">{{++$counter}}</td>
-                        <td>{{$cat->name}}</td>
-                        <td> <button type="button" class="btn btn-danger deleteCategory" data-pid="{{$cat->id}}"> Delete</button> </td>
-                        <td> <a href="/updateCategoryForm/{{$cat->id}}" class="btn btn-primary">Update</a> </td>
+                        <td>{{$author->name}}</td>
+                        <td> <button type="button" class="btn btn-danger deleteAuthor" data-pid="{{$author->id}}"> Delete</button> </td>
+                        <td> <a href="/updateAuthorForm/{{$author->id}}" class="btn btn-primary"> Update </a> </td>
                     </tr>
                 @endforeach
                 </tbody>
