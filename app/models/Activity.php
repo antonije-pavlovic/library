@@ -25,7 +25,8 @@ class Activity
     }
 
     function getActivity(){
-        return DB::table('activity_log')
+        return DB::table('activity_log as a')
+            ->join('user as u','a.user_id','=','u.id')
             ->get();
     }
 

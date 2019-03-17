@@ -10,6 +10,6 @@ class AdminController extends Controller
         return view('pages/admin/main');
     }
     function unauthorized() {
-        return view('pages/admin/unauthorized');
+        return view('pages.admin.unauthorized');
     }
 }

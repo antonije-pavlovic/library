@@ -60,6 +60,7 @@ Route::group(['middleware'=> ['adminCheck']], function (){
 //error
     Route::get('/renderErrors','ErrorController@renderError');
     Route::get('/errorCSV','ErrorController@exportCSV');
+
 //activity
     Route::get('/renderActivity','ActivityController@renderActivity');
     Route::get('/activityCSV','ActivityController@exportCSV');

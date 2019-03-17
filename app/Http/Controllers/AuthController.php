@@ -41,7 +41,6 @@ class AuthController extends Controller
     function logout(Request $req) {
         $id = $req->session()->get('user')[0]->id;
         $req->session()->forget('user');
-        $req->session()->flush();
         Activity::insertActivity($id,'user logged out');
         return redirect('/login');
     }

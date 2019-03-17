@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container mt-5">
-        <h5>All activities in app <span>Get export in <a href="/userActivityCSV/{{$data[0]->user_id}}">CSV</a></span></h5>
+
+        <h5>All activities in app <span>Get export in <a href="/userActivityCSV/@if(count($data)){{$data[0]->user_id}}@endif">CSV</a></span></h5>
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
             <table class="table mt-3">
                 <thead class="thead-dark">
@@ -28,5 +29,8 @@
                 </tbody>
             </table>
         </div>
+        @if(!count($data))
+            <div class="container"> No activity for this user</div>
+        @endif
     </div>
 @endsection

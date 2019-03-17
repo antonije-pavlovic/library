@@ -43,7 +43,7 @@
                 @foreach($data as $activity)
                     <tr>
                         <th scope="row">{{++$counter}}</th>
-                        <td>{{$activity->user_id}}</td>
+                        <td>{{$activity->name}}</td>
                         <td>{{$activity->activity}}</td>
                         <td>{{$activity->date}}</td>
                         <td>{{$activity->time}}</td>

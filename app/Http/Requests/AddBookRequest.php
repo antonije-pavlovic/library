@@ -39,15 +39,7 @@ class AddBookRequest extends FormRequest
     public function messages()
     {
         return [
-            "title.required" => "Enter title",
-            "pages.required" => "Enter pages",
-            "year.required" => "Enter year",
-            "isbn.required" => "Enter isbn",
-            "description.required" => "Enter description",
-            "picture.required" => "Enter picture",
-            "price.required" => "Enter price",
-            "author.required" => "Enter author",
-            "category.required" => "Enter category",
+            "required" => "Enter :attribute"
         ];
     }
 }

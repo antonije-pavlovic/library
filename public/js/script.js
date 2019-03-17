@@ -246,7 +246,7 @@ const main = () => {
 
                 //render books
                 let elem = '';
-                for(let i = 0  ; i < data.length ; i++) {
+                for(let i = 0  ; i < numPerPage ; i++) {
                     if(i > numPerPage)
                         break;
                     elem += `<div class="card col-lg-3 m-2  bg-light ">
